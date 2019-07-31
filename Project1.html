@@ -1,10 +1,301 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+      integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+      crossorigin="anonymous"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Docffffument</title>
+
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Arvo:700);
+      @import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      body {
+        background-image: url("https://previews.123rf.com/images/leungchopan/leungchopan1506/leungchopan150600626/41731819-cork-board-background.jpg");
+      }
+      #note-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .sticky-note {
+        background-image: url("https://newvitruvian.com/images/transparent-postit-real-6.png");
+        height: 450px;
+        width: 400px;
+        margin-left: 50px;
+        margin-right: 50px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        animation: fadein 2s;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .Header {
+        height: 60px;
+        margin-top: 50px;
+        margin-left: 50px;
+        color: rgb(231, 37, 37);
+        font-weight: 550;
+        font-style: italic;
+        font-size: 24px;
+      }
+      .noteInnerContent {
+        height: 220px;
+        width: 310px;
+        margin-left: 50px;
+        font-size: 18px;
+        font-style: italic;
+        overflow-x: hidden;
+        overflow-x: auto;
+        text-align: justify;
+      }
+      .notebook-container {
+        /* background-image: url("https://previews.123rf.com/images/rawpixel/rawpixel1711/rawpixel171100533/89607513-sticky-note-board-office.jpg"); */
+        display: flex;
+        justify-content: center;
+        /* background-repeat: no-repeat; */
+        background-size: 100%;
+      }
+      .notebook {
+        background-image: url("https://media.discordapp.net/attachments/428616415067635722/604310499974185021/de69ed356d5780760d514f0ed3c11278.png?width=693&height=469");
+        height: 600px;
+        width: 800px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin-top: 25px;
+        border-radius: 25px;
+      }
+      .dateAndTimePrint {
+        font-size: 18px;
+        font-style: oblique;
+        font-weight: bold;
+        margin-left: 50px;
+      }
+      .glyphicon {
+        background-color: rgba(241, 27, 27, 0.904);
+        border: black solid;
+        border-radius: 80px;
+        height: 50px;
+        width: 50px;
+        font-size: 22px;
+        margin-top: 50px;
+        margin-right: 50px;
+        /* visibility: hidden; */
+      }
+      form {
+        margin-top: 120px;
+        margin-right: 80px;
+      }
+      .comepletedButton {
+        background-color: rgba(118, 212, 63, 0.904);
+        border: black solid;
+        border-radius: 80px;
+        height: 50px;
+        width: 50px;
+        font-size: 22px;
+        /* margin-top: 30px; */
+        margin-right: 50px;
+        visibility: visible;
+      }
+      .btn-group {
+        margin-left: 230px;
+        margin-top: 80px;
+      }
+      #openButton {
+        border-bottom-left-radius: 25px;
+        border-top-left-radius: 25px;
+        width: 100px;
+      }
+      #allButton {
+        width: 100px;
+      }
+      #comButton {
+        border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        width: 100px;
+      }
+      .inputstl {
+        padding: 9px;
+
+        border: solid 1px #460023;
+
+        outline: 0;
+
+        background: -webkit-gradient(
+          linear,
+          left top,
+          left 25,
+          from(#f8f6f5),
+          color-stop(4%, #cdc2f5),
+          to(#fafafa)
+        );
+
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+
+        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+
+        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+      }
+      .plate {
+        width: 410px;
+        margin: 10% auto;
+      }
+      .script {
+        font-family: "Seaweed Script";
+        color: rgb(29, 2, 2);
+        text-align: center;
+        font-size: 55px;
+        position: relative;
+        margin: 0;
+      }
+      .script span {
+        /* background-color: #222; */
+
+        background-color: transparent;
+      }
+      .script:before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        width: 100%;
+        border-bottom: 3px solid rgb(180, 12, 12);
+      }
+    </style>
+    <title>Task Manager</title>
   </head>
-  <body></body>
+
+  <body>
+    <p class="script"><span>Task Manager</span></p>
+    <div class="notebook-container">
+      <div class="notebook">
+        <div class="container">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="address1" class="col-sm-2 control-label"
+                >Task Subject:</label
+              >
+              <!-- //===============subject input============// -->
+              <div class="col-sm-5">
+                <input
+                  type="text"
+                  class="form-control inputstl"
+                  id="formSubjectText"
+                  placeholder="Title 15 characters or less"
+                />
+              </div>
+              comepletedButton.innerHTML = "";
+            </div>
+
+            <div class="form-group">
+              <label for="task1" class="col-sm-2 control-label"
+                >Task Detail:</label
+              >
+              <!-- //===============area input============// -->
+              <div class="col-sm-5">
+                <textarea
+                  class="form-control inputstl"
+                  id="formTextArea"
+                  rows="8"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Due Date:</label>
+              <!-- //===============date input============// -->
+              <div class="col-sm-2">
+                <input
+                  type="date"
+                  id="formDate"
+                  class="form-control inputstl"
+                  placeholder="Descripe the task"
+                />
+              </div>
+              <!-- //===============time input============// -->
+              <div class="form-group" style="margin-right: 10px">
+                <label class="col-sm-1 control-label">Time:</label>
+                <div class="col-sm-2">
+                  <input
+                    type="time"
+                    id="formTime"
+                    value="16:20"
+                    class="form-control inputstl"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- //===============buttons input============// -->
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-2">
+                <button
+                  type="button"
+                  onclick="execute()"
+                  class="btn btn-lg btn-block btn-success"
+                >
+                  Pin Note
+                </button>
+              </div>
+              <div class="col-sm-offset-1 col-sm-2">
+                <button
+                  type="button"
+                  onclick="resetForm()"
+                  class="btn btn-lg btn-block btn-danger"
+                >
+                  Clear Form
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="container">
+            <div class="btn-group">
+              <button
+                type="button"
+                id="openButton"
+                onclick="Open()"
+                class="btn btn-primary"
+              >
+                Open
+              </button>
+              <button
+                type="button"
+                id="allButton"
+                onclick="All()"
+                class="btn btn-primary"
+              >
+                All
+              </button>
+              <button
+                type="button"
+                id="comButton"
+                onclick="Completed()"
+                class="btn btn-primary"
+              >
+                Completed
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ml-auto col-xl" id="note-main-container">
+      <div class="row" id="note-container"></div>
+    </div>
+    <script src="Project1Class.js"></script>
+    <script src="Project1.js"></script>
+  </body>
 </html>
