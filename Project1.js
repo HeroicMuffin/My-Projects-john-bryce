@@ -88,30 +88,6 @@ function modifyDate(date) {
   return `${day}/${month}/${year}`;
 }
 
-// function All(){
-//   stickyNoteStorage.filter(thisNote => !thisNote.completed)
-//   stickyNoteStorage.forEach(note => {
-//     const { id, subject, textArea, date, time, completed } = note;
-//     draw(id, subject, textArea, date, time, completed);
-//   });
-
-// }
-// function All(){
-//   stickyNoteStorage.filter(thisNote => !thisNote.completed)
-//   stickyNoteStorage.forEach(note => {
-//     const { id, subject, textArea, date, time, completed } = note;
-//     draw(id, subject, textArea, date, time, completed);
-//   });
-
-// }
-// function All(){
-//   stickyNoteStorage.filter(thisNote => !thisNote.completed)
-//   stickyNoteStorage.forEach(note => {
-//     const { id, subject, textArea, date, time, completed } = note;
-//     draw(id, subject, textArea, date, time, completed);
-//   });
-
-// }
 
 function All() {
   for (let i = 0; i < stickyNoteStorage.length; i++) {

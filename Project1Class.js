@@ -45,7 +45,7 @@ class noteObject {
     });
     const comepletedButton = document.createElement("button");
     comepletedButton.className = "glyphicon glyphicon-check";
-    comepletedButton.id = "completedButton"
+    comepletedButton.id = "completedButton";
     comepletedButton.addEventListener("click", () => {
       noteObj.completed = true;
       // document.getElementById("comepletedButton.id").style.visibility = "hidden";
@@ -69,10 +69,8 @@ class noteObject {
     newNote.append(comepletedButton);
     noteContainer.append(newNote);
 
-    if (noteObj.completed) {
+    if (noteObj.completed)
       document.getElementById(noteObj.id).style.opacity = 0.5;
-    } else
-      document.getElementById(comepletedButton.id).style.visibility = "visible";
 
     newNote.onmouseout = () => {
       document.getElementById(deleteButton.id).style.visibility = "hidden";
