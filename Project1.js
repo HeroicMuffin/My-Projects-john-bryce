@@ -88,47 +88,48 @@ function modifyDate(date) {
   return `${day}/${month}/${year}`;
 }
 
+// function All(){
+//   stickyNoteStorage.filter(thisNote => !thisNote.completed)
+//   stickyNoteStorage.forEach(note => {
+//     const { id, subject, textArea, date, time, completed } = note;
+//     draw(id, subject, textArea, date, time, completed);
+//   });
+
+// }
+// function All(){
+//   stickyNoteStorage.filter(thisNote => !thisNote.completed)
+//   stickyNoteStorage.forEach(note => {
+//     const { id, subject, textArea, date, time, completed } = note;
+//     draw(id, subject, textArea, date, time, completed);
+//   });
+
+// }
+// function All(){
+//   stickyNoteStorage.filter(thisNote => !thisNote.completed)
+//   stickyNoteStorage.forEach(note => {
+//     const { id, subject, textArea, date, time, completed } = note;
+//     draw(id, subject, textArea, date, time, completed);
+//   });
+
+// }
+
 function All() {
   for (let i = 0; i < stickyNoteStorage.length; i++) {
-    document.getElementById(stickyNoteStorage[i].id).style.visibility =
-      "visible";
+    document.getElementById(stickyNoteStorage[i].id).style.display = "flex";
   }
 }
 function Open() {
   All();
   for (let i = 0; i < stickyNoteStorage.length; i++) {
     if (stickyNoteStorage[i].completed)
-      document.getElementById(stickyNoteStorage[i].id).style.visibility =
-        "hidden";
+      document.getElementById(stickyNoteStorage[i].id).style.display = "none";
   }
 }
 function Completed() {
   All();
   for (let i = 0; i < stickyNoteStorage.length; i++) {
     if (!stickyNoteStorage[i].completed)
-      document.getElementById(stickyNoteStorage[i].id).style.visibility =
-        "hidden";
+      document.getElementById(stickyNoteStorage[i].id).style.display = "none";
   }
-  document.getElementById("completedButton").style.visibility = "hidden";
 }
-
-// const render = (beforeFn, condition, display) => {
-//   beforeFn();
-//   for (let i = 0; i < stickyNoteStorage.length; i++) {
-//     if (condition(stickyNoteStorage, i))
-//       document.getElementById(
-//         stickyNoteStorage[i].id
-//       ).style.visibility = display;
-//   }
-// };
-// const All = () => {
-//   render(() => {}, () => true, "visible");
-// };
-// const Completed = () => {
-//   render(() => All(), (storage, i) => !storage[i].completed, "hidden");
-// };
-// const Open = () => {
-//   render(() => All(), (storage, i) => storage[i].completed, "hidden");
-// };
-
-drawFromStorageOnBoot(); 
+drawFromStorageOnBoot();
