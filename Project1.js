@@ -88,50 +88,47 @@ function modifyDate(date) {
   return `${day}/${month}/${year}`;
 }
 
-// function All() {
-//   for (let i = 0; i < stickyNoteStorage.length; i++) {
-//     document.getElementById(stickyNoteStorage[i].id).style.visibility =
-//       "visible";
-//   }
-// }
-// function Open() {
-//   All();
-//   for (let i = 0; i < stickyNoteStorage.length; i++) {
-//     if (stickyNoteStorage[i].completed)
-//       document.getElementById(stickyNoteStorage[i].id).style.visibility =
-//         "hidden";
-//   }
-// }
-// function Completed() {
-//   All();
-//   for (let i = 0; i < stickyNoteStorage.length; i++) {
-//     if (!stickyNoteStorage[i].completed)
-//       document.getElementById(stickyNoteStorage[i].id).style.visibility =
-//         "hidden";
-//   }
-// }
-
-drawFromStorageOnBoot();
-
-const render = (beforeFn, condition, display) => {
-  beforeFn();
+function All() {
   for (let i = 0; i < stickyNoteStorage.length; i++) {
-    if (condition(stickyNoteStorage, i))
-      document.getElementById(
-        stickyNoteStorage[i].id
-      ).style.visibility = display;
+    document.getElementById(stickyNoteStorage[i].id).style.visibility =
+      "visible";
   }
-};
-const All = () => {
-  render(() => {}, () => true, "visible");
-};
-const Completed = () => {
-  render(() => All(), (storage, i) => !storage[i].completed, "hidden");
-};
-const Open = () => {
-  render(() => All(), (storage, i) => storage[i].completed, "hidden");
-};
+}
+function Open() {
+  All();
+  for (let i = 0; i < stickyNoteStorage.length; i++) {
+    if (stickyNoteStorage[i].completed)
+      document.getElementById(stickyNoteStorage[i].id).style.visibility =
+        "hidden";
+  }
+}
+function Completed() {
+  All();
+  for (let i = 0; i < stickyNoteStorage.length; i++) {
+    if (!stickyNoteStorage[i].completed)
+      document.getElementById(stickyNoteStorage[i].id).style.visibility =
+        "hidden";
+  }
+  document.getElementById("completedButton").style.visibility = "hidden";
+}
 
-// showAllReminders
-// change tp const ids
-//[stickyNoteStorage]
+// const render = (beforeFn, condition, display) => {
+//   beforeFn();
+//   for (let i = 0; i < stickyNoteStorage.length; i++) {
+//     if (condition(stickyNoteStorage, i))
+//       document.getElementById(
+//         stickyNoteStorage[i].id
+//       ).style.visibility = display;
+//   }
+// };
+// const All = () => {
+//   render(() => {}, () => true, "visible");
+// };
+// const Completed = () => {
+//   render(() => All(), (storage, i) => !storage[i].completed, "hidden");
+// };
+// const Open = () => {
+//   render(() => All(), (storage, i) => storage[i].completed, "hidden");
+// };
+
+drawFromStorageOnBoot(); 

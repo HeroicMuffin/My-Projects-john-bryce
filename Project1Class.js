@@ -45,9 +45,10 @@ class noteObject {
     });
     const comepletedButton = document.createElement("button");
     comepletedButton.className = "glyphicon glyphicon-check";
-    comepletedButton.id = "comepletedButton";
+    comepletedButton.id = "completedButton"
     comepletedButton.addEventListener("click", () => {
       noteObj.completed = true;
+      // document.getElementById("comepletedButton.id").style.visibility = "hidden";
 
       stickyNoteStorage.forEach(element => {
         if (element.id === newNote.id) {
@@ -59,14 +60,6 @@ class noteObject {
           localStorage.setItem("stickyNoteStorage", JSONarrayNew);
         }
       });
-      // JSONarray.forEach(element => {
-      //   if (element.id === newNote.id) {
-      //     element.completed = true;
-      //     localStorage.removeItem("stickyNoteStorage", JSONarray);
-      //     let JSONarray = JSON.stringify(stickyNoteStorage);
-      //     localStorage.setItem("stickyNoteStorage", JSONarray);
-      //   }
-      // });
     });
 
     newNote.append(noteHeader);
@@ -77,9 +70,10 @@ class noteObject {
     noteContainer.append(newNote);
 
     if (noteObj.completed) {
-      debugger;
       document.getElementById(noteObj.id).style.opacity = 0.5;
-    }
+    } else
+      document.getElementById(comepletedButton.id).style.visibility = "visible";
+
     newNote.onmouseout = () => {
       document.getElementById(deleteButton.id).style.visibility = "hidden";
     };
