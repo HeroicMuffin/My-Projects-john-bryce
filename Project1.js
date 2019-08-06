@@ -1,4 +1,4 @@
-//==============Project 1================
+//==============Project 1================//
 const notesDOM = {
   formSubjectText: document.querySelector("#formSubjectText"),
   formTextArea: document.querySelector("#formTextArea"),
@@ -27,18 +27,20 @@ function execute() {
       formTextArea.value,
       formDate.value,
       formTime.value,
-      false
+      false,
+      "sticky-note"
     );
 }
 
-const draw = (id, subject, text, date, time, completed) => {
+function draw(id, subject, text, date, time, completed, animation) {
   const newStickyNote = new noteObject(
     id,
     subject,
     text,
     date,
     time,
-    completed
+    completed,
+    animation
   );
   stickyNoteStorage.push(newStickyNote);
 
@@ -48,7 +50,7 @@ const draw = (id, subject, text, date, time, completed) => {
   stickyNoteStorage[stickyNoteStorage.length - 1].createStickyNote(
     newStickyNote
   );
-};
+}
 
 function resetForm() {
   document.querySelector(".form-horizontal").reset();
@@ -70,7 +72,7 @@ function drawFromStorageOnBoot() {
   localArray &&
     localArray.forEach(note => {
       const { id, subject, textArea, date, time, completed } = note;
-      draw(id, subject, textArea, date, time, completed);
+      draw(id, subject, textArea, date, time, completed, "sticky-noAnim");
     });
 }
 
@@ -87,7 +89,6 @@ function modifyDate(date) {
   if (month < 10) month = "0" + month;
   return `${day}/${month}/${year}`;
 }
-
 
 function All() {
   for (let i = 0; i < stickyNoteStorage.length; i++) {

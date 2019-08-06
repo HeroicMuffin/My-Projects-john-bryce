@@ -1,6 +1,6 @@
 //--------------class constructor------------//
 class noteObject {
-  constructor(id, subject, textArea, date, time, completed) {
+  constructor(id, subject, textArea, date, time, completed, animation) {
     !id
       ? (this.id = `note#${Math.random()
           .toString(36)
@@ -12,11 +12,12 @@ class noteObject {
     this.date = date;
     this.time = time;
     this.completed = completed;
+    this.animation = animation;
   }
   createStickyNote(noteObj) {
     const noteContainer = document.querySelector("#note-container");
     const newNote = document.createElement("div");
-    newNote.className = "sticky-note";
+    newNote.className = noteObj.animation;
     newNote.id = noteObj.id;
 
     const noteHeader = document.createElement("span");
