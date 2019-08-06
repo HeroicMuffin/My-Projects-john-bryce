@@ -93,6 +93,8 @@ function modifyDate(date) {
 function All() {
   for (let i = 0; i < stickyNoteStorage.length; i++) {
     document.getElementById(stickyNoteStorage[i].id).style.display = "flex";
+    document.getElementById(stickyNoteStorage[i].id).className =
+      "sticky-noAnim";
   }
 }
 function Open() {
